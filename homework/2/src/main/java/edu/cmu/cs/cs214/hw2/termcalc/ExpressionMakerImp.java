@@ -1,92 +1,96 @@
 package edu.cmu.cs.cs214.hw2.termcalc;
 
-import edu.cmu.cs.cs214.hw2.expression.AbsoluteValueExpression;
-import edu.cmu.cs.cs214.hw2.expression.DifferenceExpression;
-import edu.cmu.cs.cs214.hw2.expression.DivisionExpression;
-import edu.cmu.cs.cs214.hw2.expression.ExponentiationExpression;
-import edu.cmu.cs.cs214.hw2.expression.Expression;
-import edu.cmu.cs.cs214.hw2.expression.NegationExpression;
-import edu.cmu.cs.cs214.hw2.expression.NumberExpression;
-import edu.cmu.cs.cs214.hw2.expression.ProductExpression;
-import edu.cmu.cs.cs214.hw2.expression.SumExpression;
+import edu.cmu.cs.cs214.hw2.expression.*;
 
 /**
  * Class to implement ExpressionMaker and create a new Expression
- * @author zhilinh
+ * @author YunZou
  *
  */
 public class ExpressionMakerImp implements ExpressionMaker{
 
 	/**
-	 * Method that returns a new Expression of the sum of addend1 and addend2.
+	 * @param addend1 the first addend of the sum
+	 * @param addend2 the second addend of the sum
+	 * @return
 	 */
 	@Override
 	public Expression sumExpression(Expression addend1, Expression addend2) {
-		Expression sumExpression = new SumExpression(addend1, addend2);
-		return sumExpression;
+		Expression result = new SumExpression(addend1, addend2);
+		return result;
 	}
 
 	/**
-	 * Method that returns a new Expression of the difference of op1 and op2.
+	 * @param op1 the first operand of the subtraction
+	 * @param op2 the second operand of the subtraction
+	 * @return
 	 */
 	@Override
 	public Expression differenceExpression(Expression op1, Expression op2) {
-		Expression differenceExpression = new DifferenceExpression(op1, op2);
-		return differenceExpression;
+		Expression result = new DifferenceExpression(op1, op2);
+		return result;
 	}
 
 	/**
-	 * Method that returns a new Expression of the product of factor1 and factor2.
+	 * @param factor1 the first factor of the multiplication
+	 * @param factor2 the second factor of the multiplication
+	 * @return
 	 */
 	@Override
 	public Expression productExpression(Expression factor1, Expression factor2) {
-		Expression productExpression = new ProductExpression(factor1, factor2);
-		return productExpression;
+		Expression result = new ProductExpression(factor1, factor2);
+		return result;
 	}
 
 	/**
-	 * Method that returns a new Expression of the division of dividend and divisor.
+	 * @param dividend of the division
+	 * @param divisor  of the division
+	 * @return
 	 */
 	@Override
 	public Expression divisionExpression(Expression dividend, Expression divisor) {
-		Expression divisionExpression = new DivisionExpression(dividend, divisor);
-		return divisionExpression;
+		Expression result = new DivisionExpression(dividend, divisor);
+		return result;
 	}
 
 	/**
-	 * Method that returns a new Expression of the exponentiation of base and exponent.
+	 * @param base     of the exponentiation
+	 * @param exponent of the exponentiation
+	 * @return
 	 */
 	@Override
 	public Expression exponentiationExpression(Expression base, Expression exponent) {
-		Expression exponentiationExpression = new ExponentiationExpression(base, exponent);
-		return exponentiationExpression;
+		Expression result = new ExponentiationExpression(base, exponent);
+		return result;
 	}
 
 	/**
-	 * Method that returns a new Expression of the the negated operand.
+	 * @param operand the expression whose value will be returned with a negative sign
+	 * @return
 	 */
 	@Override
 	public Expression negationExpression(Expression operand) {
-		Expression negationExpression = new NegationExpression(operand);
-		return negationExpression;
+		Expression result = new NegationExpression(operand);
+		return result;
 	}
 
 	/**
-	 * Method that returns a new Expression of the absolute value Expression of value.
+	 * @param value the expression that will be returned with a positive sign
+	 * @return
 	 */
 	@Override
 	public Expression absoluteValueExpression(Expression value) {
-		Expression absoluteValueExpression = new AbsoluteValueExpression(value);
-		return absoluteValueExpression;
+		Expression result = new AbsoluteValueExpression(value);
+		return result;
 	}
 
 	/**
-	 * Method that returns a new Expression of the value.
+	 * @param value the number that this expression represents
+	 * @return
 	 */
 	@Override
 	public Expression numberExpression(double value) {
-		Expression numberExpression = new NumberExpression(value);
-		return numberExpression;
+		Expression result = new NumberExpression(value);
+		return result;
 	}
-
 }

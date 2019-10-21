@@ -1,41 +1,31 @@
 package edu.cmu.cs.cs214.hw2.expression;
 
-/**
- * Class to compute the exponentiation of two Expression
- * @author zhilinh
- *
- */
-public final class ExponentiationExpression implements Expression {
+public class ExponentiationExpression implements Expression {
+    final private Expression val1;
+    final private Expression val2;
 
-	private Expression base, exponent;
-	
-	/**
-	 * Public constructor that assigns two Expressions to instance Expressions.
-	 * 
-	 * @param base of the exponentiation
-     * @param exponent of the exponentiation
-	 */
-	public ExponentiationExpression(Expression base, Expression exponent) {
-		this.base = base;
-		this.exponent = exponent;
-	}
-	
-	/**
-	 * toString method that returns a string of assigned Expressions and an
-	 * exponentiation operator with two parentheses. 
-	 */
-	@Override
-	public String toString() {
-		return "(" + base.toString() + "^" + exponent.toString() + ")";
-	}
-	
-	/**
-	 * Method that returns the result of the computation.
-	 * 
-	 * @return returns the value of the Expression. 
-	 */
-	public double eval() {
-		return Math.pow(base.eval(), exponent.eval());
-	}
+    /**
+     * @param val1
+     * @param add2
+     */
+    public ExponentiationExpression(Expression val1, Expression add2) {
+        this.val1 = val1;
+        this.val2 = add2;
+    }
 
+    /**
+     * @return
+     */
+    @Override
+    public double eval() {
+        return Math.pow(val1.eval(), val2.eval());
+    }
+
+    /**
+     * @return
+     */
+    @Override
+    public String toString() {
+        return "(" + val1.toString() + " ^ " + val2.toString() + ")";
+    }
 }
