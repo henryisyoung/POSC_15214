@@ -12,10 +12,12 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ *
+ */
 public class WordExpressionTest {
-    private Map<Character, Variable> variableMap = new HashMap<>();
+    private List<Variable> variables = new ArrayList<>();
     private String string = "ABC";
-    private Double DELTA = 0.00001;
 
     /**
      * Set up to test the constructor and generate a named variable list.
@@ -23,7 +25,7 @@ public class WordExpressionTest {
     @Before
     public void setup() {
         for (char c : string.toCharArray()) {
-            variableMap.put(c, new Variable(Character.toString(c)));
+            variables.add(new Variable(Character.toString(c)));
         }
     }
     /**
@@ -31,21 +33,24 @@ public class WordExpressionTest {
      */
     @Test
     public void testToString() {
-        WordExpression wordExpression = new WordExpression(string, variableMap);
+        WordExpression wordExpression = new WordExpression(string, variables);
         assertEquals(wordExpression.toString(), "ABC");
     }
 
+    /**
+     *
+     */
     @Test
     public void testEval() {
         Map<String, Integer> num = new HashMap<>();
         num.put("A", 1);
         num.put("B", 2);
         num.put("C", 3);
-        for (Variable v : variableMap.values()) {
+        for (Variable v : variables) {
             v.store(num.get(v.name()));
         }
-
-        WordExpression wordExpression = new WordExpression(string, variableMap);
-        assertTrue(Math.abs(wordExpression.eval() - 123.0) < DELTA);
+        Double delta = 0.00001;
+        WordExpression wordExpression = new WordExpression(string, variables);
+        assertTrue(Math.abs(wordExpression.eval() - 123.0) < delta);
     }
 }

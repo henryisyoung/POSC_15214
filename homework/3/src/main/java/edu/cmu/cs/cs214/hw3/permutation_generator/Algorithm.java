@@ -10,5 +10,5 @@ public interface Algorithm {
      * @param value
      * @return
      */
-    public List<Integer> permutate(String value);
+    public List<List<Integer>> permutate(List<Integer> value);
 }

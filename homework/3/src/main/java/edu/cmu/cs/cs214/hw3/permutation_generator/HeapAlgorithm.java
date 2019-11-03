@@ -13,9 +13,9 @@ public class HeapAlgorithm implements Algorithm {
      * @return
      */
     @Override
-    public List<Integer> permutate(String value) {
-        List<Integer> result = new ArrayList<>();
-        permute(value.toCharArray(), value.length(), result);
+    public List<List<Integer>> permutate(List<Integer> value) {
+        List<List<Integer>> result = new ArrayList<>();
+        permute(value, value.size(), result);
         return result;
     }
 
@@ -24,10 +24,10 @@ public class HeapAlgorithm implements Algorithm {
      * @param i
      * @param j
      */
-    private static void swap(char[] v, int i, int j) {
-        char t = v[i];
-        v[i] = v[j];
-        v[j] = t;
+    private static void swap(List<Integer> v, int i, int j) {
+        int t = v.get(i);
+        v.set(i, v.get(j));
+        v.set(j, t);
     }
 
     /**
@@ -35,9 +35,9 @@ public class HeapAlgorithm implements Algorithm {
      * @param n
      * @param result
      */
-    private void permute(char[] v, int n, List<Integer> result) {
+    private void permute(List<Integer> v, int n, List<List<Integer>> result) {
         if (n == 1) {
-            result.add(Integer.parseInt(Arrays.toString(v)));
+            result.add(new ArrayList<>(v));
         } else {
             for (int i = 0; i < n; i++) {
                 permute(v, n - 1, result);

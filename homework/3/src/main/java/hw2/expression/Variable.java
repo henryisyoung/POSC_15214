@@ -63,5 +63,22 @@ public class Variable implements Expression {
     public String name() { 
         return name;
     }
+
+    /**
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        return name.hashCode() + Double.toString(value).hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (! (obj instanceof Variable)) return false;
+        return name.equals(((Variable) obj).name) && Math.abs(value - ((Variable) obj).value) < 0.001;
+    }
 }
 
